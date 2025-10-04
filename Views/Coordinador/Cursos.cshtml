@@ -1,0 +1,54 @@
+@model IEnumerable<Sistema_U.Models.Curso>
+
+@{
+    ViewData["Title"] = "Gestión de Cursos";
+}
+
+<h2>Gestión de Cursos</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<p>
+    <a href="@Url.Action("CreateCurso")" class="btn btn-primary">Crear Nuevo Curso</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Créditos</th>
+            <th>Cupo</th>
+            <th>Horario</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Codigo</td>
+                <td>@item.Nombre</td>
+                <td>@item.Creditos</td>
+                <td>@item.CupoMaximo</td>
+                <td>@item.HorarioInicio.ToString(@"hh\:mm") - @item.HorarioFin.ToString(@"hh\:mm")</td>
+                <td>
+                    <span class="badge @(item.Activo ? "bg-success" : "bg-danger")">
+                        @(item.Activo ? "Activo" : "Inactivo")
+                    </span>
+                </td>
+                <td>
+                    <a href="@Url.Action("EditCurso", new { id = item.Id })" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="@Url.Action("ToggleCurso", new { id = item.Id })" 
+                       class="btn btn-sm @(item.Activo ? "btn-danger" : "btn-success")">
+                        @(item.Activo ? "Desactivar" : "Activar")
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
