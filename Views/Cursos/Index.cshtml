@@ -1,0 +1,63 @@
+@model IEnumerable<PortalAcademico.Models.Curso>
+
+@{
+    ViewData["Title"] = "Catálogo de Cursos";
+}
+
+<h2>Catálogo de Cursos</h2>
+
+<!-- Filtros -->
+<form method="get" class="mb-4">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" name="nombre" class="form-control" placeholder="Nombre del curso" 
+                   value="@Context.Request.Query["nombre"]" />
+        </div>
+        <div class="col-md-2">
+            <input type="number" name="creditosMin" class="form-control" placeholder="Créditos mín" 
+                   value="@Context.Request.Query["creditosMin"]" min="1" />
+        </div>
+        <div class="col-md-2">
+            <input type="number" name="creditosMax" class="form-control" placeholder="Créditos máx" 
+                   value="@Context.Request.Query["creditosMax"]" min="1" />
+        </div>
+        <div class="col-md-3">
+            <select name="horario" class="form-control">
+                <option value="">Todos los horarios</option>
+                <option value="manana" selected='@(Context.Request.Query["horario"] == "manana")'>Mañana</option>
+                <option value="tarde" selected='@(Context.Request.Query["horario"] == "tarde")'>Tarde</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </div>
+    </div>
+</form>
+
+<!-- Lista de cursos -->
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Nombre</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@item.Codigo</h6>
+                    <p class="card-text">
+                        <strong>Créditos:</strong> @item.Creditos<br>
+                        <strong>Cupo:</strong> @item.CupoMaximo<br>
+                        <strong>Horario:</strong> @item.HorarioInicio.ToString(@"hh\:mm") - @item.HorarioFin.ToString(@"hh\:mm")
+                    </p>
+                    <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No se encontraron cursos con los filtros aplicados.
+    </div>
+}
