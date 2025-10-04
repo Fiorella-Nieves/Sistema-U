@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using PortalAcademico.Data;
-using PortalAcademico.Models;
+using Sistema_U.Data;
+using Sistema_U.Models;
 
-namespace PortalAcademico.Controllers
+namespace Sistema_U.Controllers
 {
     public class CursosController : Controller
     {

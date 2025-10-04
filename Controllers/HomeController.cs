@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Sistema_U.Data;
 using Sistema_U.Models;
 
 namespace Sistema_U.Controllers;
