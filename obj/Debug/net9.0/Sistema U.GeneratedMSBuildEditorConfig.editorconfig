@@ -32,12 +32,24 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Fiorella/Desktop/Sistema U/Views/Coordinador/CreateCurso.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmFkb3JcQ3JlYXRlQ3Vyc28uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Fiorella/Desktop/Sistema U/Views/Coordinador/Cursos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmFkb3JcQ3Vyc29zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Fiorella/Desktop/Sistema U/Views/Coordinador/EditCurso.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmFkb3JcRWRpdEN1cnNvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Fiorella/Desktop/Sistema U/Views/Coordinador/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmFkb3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Fiorella/Desktop/Sistema U/Views/Coordinador/Matriculas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29vcmRpbmFkb3JcTWF0cmljdWxhcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Fiorella/Desktop/Sistema U/Views/Cursos/Details.cshtml]

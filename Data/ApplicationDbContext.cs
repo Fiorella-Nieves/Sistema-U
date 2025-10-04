@@ -19,13 +19,33 @@ namespace Sistema_U.Data
             base.OnModelCreating(builder);
 
             // Configuraciones
-            builder.Entity<Curso>()
-                .HasIndex(c => c.Codigo)
-                .IsUnique();
+            builder.Entity<Curso>(entity =>
+            {
+                entity.HasIndex(c => c.Codigo).IsUnique();
+                entity.Property(c => c.Codigo).IsRequired().HasMaxLength(20);
+                entity.Property(c => c.Nombre).IsRequired().HasMaxLength(100);
+                entity.Property(c => c.Creditos).IsRequired();
+                entity.Property(c => c.CupoMaximo).IsRequired();
+                entity.Property(c => c.HorarioInicio).IsRequired();
+                entity.Property(c => c.HorarioFin).IsRequired();
+                entity.Property(c => c.Activo).IsRequired();
+            });
 
-            builder.Entity<Matricula>()
-                .HasIndex(m => new { m.CursoId, m.UsuarioId })
-                .IsUnique();
+            // Configurar Matricula
+            builder.Entity<Matricula>(entity =>
+            {
+                entity.HasIndex(m => new { m.CursoId, m.UsuarioId }).IsUnique();
+                
+                entity.HasOne(m => m.Curso)
+                      .WithMany(c => c.Matriculas)
+                      .HasForeignKey(m => m.CursoId)
+                      .OnDelete(DeleteBehavior.Cascade);
+                
+                entity.HasOne(m => m.Usuario)
+                      .WithMany()
+                      .HasForeignKey(m => m.UsuarioId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
 
             // Validación: HorarioInicio < HorarioFin
             builder.Entity<Curso>()

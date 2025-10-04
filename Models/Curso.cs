@@ -30,6 +30,6 @@ namespace Sistema_U.Models
         public bool Activo { get; set; } = true;
         
         // Navigation properties
-        public ICollection<Matricula> Matriculas { get; set; } = new List<Matricula>();
+        public virtual ICollection<Matricula> Matriculas { get; set; } = new List<Matricula>();
     }
 }
