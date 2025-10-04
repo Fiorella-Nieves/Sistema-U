@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PortalAcademico.Models
+namespace Sistema_U.Models
 {
     public class Curso
     {

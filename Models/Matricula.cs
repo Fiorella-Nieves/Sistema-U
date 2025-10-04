@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace PortalAcademico.Models
+namespace Sistema_U.Models
 {
     public enum EstadoMatricula
     {

@@ -1,4 +1,4 @@
-@model PortalAcademico.Models.Curso
+@model Sistema_U.Models.Curso
 
 @{
     ViewData["Title"] = "Detalles del Curso";
@@ -36,7 +36,7 @@
 </div>
 
 <div class="mt-4">
-    @if (User.Identity.IsAuthenticated)
+    @if ((User?.Identity?.IsAuthenticated?? false))
     {
         <a href="@Url.Action("Create", "Matriculas", new { cursoId = Model.Id })" 
            class="btn btn-success btn-lg">Inscribirse</a>

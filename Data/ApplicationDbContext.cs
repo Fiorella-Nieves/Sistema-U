@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PortalAcademico.Models;
+using Sistema_U.Models;
 
-namespace PortalAcademico.Data
+namespace Sistema_U.Data 
 {
     public class ApplicationDbContext : IdentityDbContext
     {

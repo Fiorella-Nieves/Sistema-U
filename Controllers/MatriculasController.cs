@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using PortalAcademico.Data;
-using PortalAcademico.Models;
+using Sistema_U.Data;
+using Sistema_U.Models;
 
-namespace PortalAcademico.Controllers
+namespace Sistema_U.Controllers
 {
     public class MatriculasController : Controller
     {
@@ -21,7 +21,7 @@ namespace PortalAcademico.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int cursoId)
         {
-            if (!User.Identity.IsAuthenticated)
+            if (!(User?.Identity?.IsAuthenticated?? false))
             {
                 TempData["Error"] = "Debe iniciar sesión para inscribirse en un curso.";
                 return RedirectToAction("Details", "Cursos", new { id = cursoId });
