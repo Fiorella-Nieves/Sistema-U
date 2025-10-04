@@ -12,6 +12,21 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        @using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var ultimoCursoId = HttpContextAccessor.HttpContext?.Session.GetString("UltimoCursoVisitadoId");
+}
+
+@if (!string.IsNullOrEmpty(ultimoCursoId))
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" href="@Url.Action("Details", "Cursos", new { id = ultimoCursoId })">
+            📚 Volver al último curso
+        </a>
+    </li>
+}
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Sistema_U</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
