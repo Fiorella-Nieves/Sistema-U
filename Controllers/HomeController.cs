@@ -1,11 +1,9 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Sistema_U.Data;
 using Sistema_U.Models;
-using Microsoft.EntityFrameworkCore;
 
-
-namespace Sistema_U.Controllers
+namespace PortalAcademico.Controllers
 {
     public class HomeController : Controller
     {

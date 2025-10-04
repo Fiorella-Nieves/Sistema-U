@@ -291,3 +291,6 @@ C:\Users\Fiorella\Desktop\Sistema U\obj\Debug\net9.0\Sistema U.pdb
 C:\Users\Fiorella\Desktop\Sistema U\obj\Debug\net9.0\Sistema U.genruntimeconfig.cache
 C:\Users\Fiorella\Desktop\Sistema U\obj\Debug\net9.0\ref\Sistema U.dll
 C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\app.db
+C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\StackExchange.Redis.dll
