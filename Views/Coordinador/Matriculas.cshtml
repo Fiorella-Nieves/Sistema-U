@@ -1,0 +1,84 @@
+@model IEnumerable<Sistema_U.Models.Matricula>
+
+@{
+    ViewData["Title"] = "Gestión de Matrículas";
+}
+
+<h2>Gestión de Matrículas</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<!-- Filtro por curso -->
+<form method="get" class="mb-4">
+    <div class="row">
+        <div class="col-md-6">
+            <select name="cursoId" class="form-control" onchange="this.form.submit()">
+                <option value="">Todos los cursos</option>
+                @foreach (var curso in ViewBag.Cursos)
+                {
+                    <option value="@curso.Id" selected="@(ViewBag.CursoSeleccionado == curso.Id)">
+                        @curso.Codigo - @curso.Nombre
+                    </option>
+                }
+            </select>
+        </div>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Curso</th>
+            <th>Estudiante</th>
+            <th>Fecha Registro</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Curso.Codigo - @item.Curso.Nombre</td>
+                <td>@item.Usuario.Email</td>
+                <td>@item.FechaRegistro.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>
+                    <span class="badge 
+                        @(item.Estado == Sistema_U.Models.EstadoMatricula.Confirmada ? "bg-success" :
+                          item.Estado == Sistema_U.Models.EstadoMatricula.Pendiente ? "bg-warning" : "bg-danger")">
+                        @item.Estado
+                    </span>
+                </td>
+                <td>
+                    @if (item.Estado != Sistema_U.Models.EstadoMatricula.Confirmada)
+                    {
+                        <form method="post" action="@Url.Action("CambiarEstadoMatricula")" class="d-inline">
+                            <input type="hidden" name="matriculaId" value="@item.Id" />
+                            <input type="hidden" name="nuevoEstado" value="Confirmada" />
+                            <button type="submit" class="btn btn-sm btn-success">Confirmar</button>
+                        </form>
+                    }
+                    
+                    @if (item.Estado != Sistema_U.Models.EstadoMatricula.Cancelada)
+                    {
+                        <form method="post" action="@Url.Action("CambiarEstadoMatricula")" class="d-inline">
+                            <input type="hidden" name="matriculaId" value="@item.Id" />
+                            <input type="hidden" name="nuevoEstado" value="Cancelada" />
+                            <button type="submit" class="btn btn-sm btn-danger">Cancelar</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No se encontraron matrículas con los filtros aplicados.
+    </div>
+}

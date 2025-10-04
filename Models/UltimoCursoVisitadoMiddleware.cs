@@ -19,9 +19,6 @@ namespace Sistema_U.Middlewares
                 if (!string.IsNullOrEmpty(cursoId) && int.TryParse(cursoId, out int id))
                 {
                     context.Session.SetString("UltimoCursoVisitadoId", cursoId);
-                    
-                    // También podemos guardar el nombre si lo tenemos disponible
-                    // Esto requeriría una consulta a la base de datos o pasar el nombre por ViewData
                 }
             }
 

@@ -13,7 +13,6 @@ C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\appsettings.Development.jso
 C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\appsettings.json
 C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\Sistema U.staticwebassets.runtime.json
 C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\Sistema U.staticwebassets.endpoints.json
-C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\app.db
 C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\Sistema U.exe
 C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\Sistema U.deps.json
 C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\Sistema U.runtimeconfig.json
@@ -291,3 +290,4 @@ C:\Users\Fiorella\Desktop\Sistema U\obj\Debug\net9.0\refint\Sistema U.dll
 C:\Users\Fiorella\Desktop\Sistema U\obj\Debug\net9.0\Sistema U.pdb
 C:\Users\Fiorella\Desktop\Sistema U\obj\Debug\net9.0\Sistema U.genruntimeconfig.cache
 C:\Users\Fiorella\Desktop\Sistema U\obj\Debug\net9.0\ref\Sistema U.dll
+C:\Users\Fiorella\Desktop\Sistema U\bin\Debug\net9.0\app.db

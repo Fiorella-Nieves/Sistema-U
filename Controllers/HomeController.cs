@@ -2,31 +2,35 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Sistema_U.Data;
 using Sistema_U.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace Sistema_U.Controllers;
 
-public class HomeController : Controller
+namespace Sistema_U.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        private readonly ApplicationDbContext _context;
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+        public HomeController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+        public async Task<IActionResult> Index()
+        {
+            // Mostrar cursos destacados en la página principal
+            var cursosDestacados = await _context.Cursos
+                .Where(c => c.Activo)
+                .OrderByDescending(c => c.Id)
+                .Take(3)
+                .ToListAsync();
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(cursosDestacados);
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
     }
 }

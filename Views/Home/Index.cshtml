@@ -1,8 +1,60 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<Sistema_U.Models.Curso>
+
+@{
+    ViewData["Title"] = "Portal Académico";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bienvenido al Portal Académico</h1>
+    <p class="lead">Sistema de gestión de cursos y matrículas</p>
+</div>
+
+@if (Model.Any())
+{
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3>Cursos Destacados</h3>
+        </div>
+        @foreach (var curso in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@curso.Nombre</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@curso.Codigo</h6>
+                        <p class="card-text">
+                            <strong>Créditos:</strong> @curso.Creditos<br>
+                            <strong>Horario:</strong> @curso.HorarioInicio.ToString(@"hh\:mm") - @curso.HorarioFin.ToString(@"hh\:mm")
+                        </p>
+                        <a href="@Url.Action("Details", "Cursos", new { id = curso.Id })" class="btn btn-primary">Ver Curso</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">Explora Cursos</h5>
+                <p class="card-text">Descubre todos los cursos disponibles e inscríbete</p>
+                <a href="@Url.Action("Index", "Cursos")" class="btn btn-success">Ver Catálogo Completo</a>
+            </div>
+        </div>
+    </div>
+    
+    @if (User.IsInRole("Coordinador"))
+    {
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Panel de Coordinador</h5>
+                    <p class="card-text">Gestiona cursos y matrículas</p>
+                    <a href="@Url.Action("Index", "Coordinador")" class="btn btn-warning">Ir al Panel</a>
+                </div>
+            </div>
+        </div>
+    }
 </div>
